@@ -1,0 +1,51 @@
+.data-grid-container .MuiDataGrid-root {
+    border: none;
+}
+
+.data-grid-container .MuiDataGrid-cell {
+    border-bottom: none;
+}
+
+.name-column--cell {
+    color: var(--greenAccent300);
+}
+
+.data-grid-container .MuiDataGrid-columnHeaders {
+    background-color: var(--blueAccent700);
+    border-bottom: none;
+}
+
+.data-grid-container .MuiDataGrid-virtualScroller {
+    background-color: var(--primary400);
+}
+
+.data-grid-container .MuiDataGrid-footerContainer {
+    border-top: none;
+    background-color: var(--blueAccent700);
+}
+
+.data-grid-container .MuiCheckbox-root {
+    color: var(--greenAccent200) !important;
+}
+
+.access-level.admin {
+    background-color: var(--greenAccent600);
+}
+
+.access-level.manager {
+    background-color: var(--greenAccent700);
+}
+
+.access-level.user {
+    background-color: var(--greenAccent700);
+}
+
+:root {
+    --greenAccent300: #66bb6a;
+    --greenAccent600: #43a047;
+    --greenAccent700: #388e3c;
+    --blueAccent700: #1976d2;
+    --primary400: #42a5f5;
+    --greenAccent200: #81c784;
+    --grey100: #f5f5f5;
+}

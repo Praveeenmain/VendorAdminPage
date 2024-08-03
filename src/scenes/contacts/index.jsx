@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 
@@ -9,57 +9,118 @@ const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  // Dummy data
+  const [vendors, setVendors] = useState([
+    {
+      id: 1,
+      vendorName: "John Doe",
+      businessName: "John's Catering",
+      subscriptionFee: true,
+      category: "Services",
+      email: "john@example.com",
+      contactNumber: "123-456-7890",
+    },
+    {
+      id: 2,
+      vendorName: "Jane Smith",
+      businessName: "Smith Event Planning",
+      subscriptionFee: false,
+      category: "Services",
+      email: "jane@example.com",
+      contactNumber: "234-567-8901",
+    },
+    {
+      id: 3,
+      vendorName: "Alice Johnson",
+      businessName: "Alice's Florals",
+      subscriptionFee: true,
+      category: "Products",
+      email: "alice@example.com",
+      contactNumber: "345-678-9012",
+    },
+    {
+      id: 4,
+      vendorName: "Bob Brown",
+      businessName: "Bob's Rentals",
+      subscriptionFee: false,
+      category: "Products",
+      email: "bob@example.com",
+      contactNumber: "456-789-0123",
+    },
+    {
+      id: 5,
+      vendorName: "Charlie Davis",
+      businessName: "Davis Music",
+      subscriptionFee: true,
+      category: "Services",
+      email: "charlie@example.com",
+      contactNumber: "567-890-1234",
+    },
+    {
+      id: 6,
+      vendorName: "Eve White",
+      businessName: "White's Decorations",
+      subscriptionFee: true,
+      category: "Both",
+      email: "eve@example.com",
+      contactNumber: "678-901-2345",
+    },
+  ]);
+
+  // Function to handle deleting a vendor
+  const handleDelete = (id) => {
+    setVendors((prevVendors) => prevVendors.filter((vendor) => vendor.id !== id));
+  };
+
+  // Function to handle blocking a vendor
+  const handleBlock = (id) => {
+    // You can add block functionality here
+    alert(`Vendor with ID ${id} has been blocked.`);
+  };
+
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+    { field: "id", headerName: "Vendor ID", flex: 0.5 },
+    { field: "vendorName", headerName: "Vendor Name", flex: 1 },
+    { field: "businessName", headerName: "Business Name", flex: 1 },
+    { field: "email", headerName: "Email", flex: 1 },
+    { field: "contactNumber", headerName: "Contact Number", flex: 1 },
     {
-      field: "name",
-      headerName: "Name",
+      field: "subscriptionFee",
+      headerName: "Subscription Fee",
       flex: 1,
-      cellClassName: "name-column--cell",
+      renderCell: (params) => (params.value ? "Paid" : "Unpaid"),
     },
+    { field: "category", headerName: "Category", flex: 1 },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "actions",
+      headerName: "Actions",
       flex: 1,
-    },
-    {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "Zip Code",
-      flex: 1,
+      renderCell: (params) => (
+        <Box display="flex" gap="10px">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleDelete(params.row.id)}
+          >
+            Delete
+          </Button>
+          <Button
+            variant="contained"
+            color="warning"
+            onClick={() => handleBlock(params.row.id)}
+          >
+            Block
+          </Button>
+        </Box>
+      ),
     },
   ];
 
   return (
     <Box m="20px">
-      <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Future Reference"
-      />
+      <Header title="Vendors" subtitle="List of Contacts for Future Reference" />
       <Box
-        m="40px 0 0 0"
+        mt="40px"
         height="75vh"
         sx={{
           "& .MuiDataGrid-root": {
@@ -67,6 +128,7 @@ const Contacts = () => {
           },
           "& .MuiDataGrid-cell": {
             borderBottom: "none",
+            color: colors.grey[100],
           },
           "& .name-column--cell": {
             color: colors.greenAccent[300],
@@ -91,9 +153,11 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={vendors}
           columns={columns}
-          components={{ Toolbar: GridToolbar }}
+          components={{
+            Toolbar: GridToolbar,
+          }}
         />
       </Box>
     </Box>
