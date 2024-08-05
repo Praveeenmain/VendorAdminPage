@@ -1,0 +1,60 @@
+/* src/components/Login.css */
+
+.admin-login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .admin-login-header {
+    margin-bottom: 20px;
+  }
+  
+  .admin-login-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-login-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .admin-login-label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .admin-login-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .admin-login-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .admin-login-button:disabled {
+    background-color: #6c757d;
+  }
+  
+  .admin-login-error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  .admin-login-success-message {
+    color: green;
+    margin-top: 10px;
+  }
+  
