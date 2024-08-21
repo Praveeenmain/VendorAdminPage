@@ -39,8 +39,12 @@ const Login = () => {
 
   return (
     <div className="admin-login-container">
-      <h2 className="admin-login-header">Admin Login</h2>
+      <div>
+        <img src={require('../../assests/admin.png')} alt="admin" className="admin-image"/>
+      </div>
+      
       <form className="admin-login-form" onSubmit={handleSubmit}>
+      <h2 className="admin-login-header">Admin Login</h2>
         <div className="admin-login-form-group">
           <label htmlFor="username" className="admin-login-label">Username</label>
           <input

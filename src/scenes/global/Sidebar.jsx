@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie"; // Importing Cookies from js-cookie
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -11,9 +12,8 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";  // Importing logout icon
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
@@ -38,6 +38,13 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState("Dashboard");
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Remove the token from cookies
+    Cookies.remove("token");
+    navigate("/login"); // Redirect to login page after logout
+  };
 
   return (
     <Box
@@ -105,10 +112,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                Evobuz
+                  Evobuz
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                 1st Admin
+                  1st Admin
                 </Typography>
               </Box>
             </Box>
@@ -180,8 +187,15 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-
-  
+            
+            {/* Logout Button */}
+            <MenuItem
+              style={{ marginTop: 'auto', color: colors.redAccent[500] }}
+              onClick={handleLogout}
+              icon={<ExitToAppIcon />}
+            >
+              <Typography>Logout</Typography>
+            </MenuItem>
           </Box>
         </Menu>
       </ProSidebar>
