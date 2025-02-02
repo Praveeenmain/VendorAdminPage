@@ -90,12 +90,10 @@ const Team = () => {
   ];
 
   const rows = [
-    { id: 1, name: "Dhanush", age: 22, phone: "123-456-7890", email: "dhanush@example.com", designation: "Project Lead", access: "admin" },
-    { id: 2, name: "Praveen", age: 24, phone: "234-567-8901", email: "praveen@example.com", designation: "Backend Developer", access: "manager" },
-    { id: 3, name: "Sanjesh", age: 23, phone: "345-678-9012", email: "sanjesh@example.com", designation: "Frontend Developer", access: "user" },
-    { id: 4, name: "Druva", age: 25, phone: "456-789-0123", email: "druva@example.com", designation: "Backend Developer", access: "manager" },
-    { id: 5, name: "Bhargav", age: 21, phone: "567-890-1234", email: "bhargav@example.com", designation: "Backend Developer", access: "user" },
-    { id: 6, name: "Azaad", age: 20, phone: "678-901-2345", email: "azaad@example.com", designation: "Frontend Developer", access: "user" },
+    { id: 1, name: "Dhanush", age: 22, phone: "+919182167428", email: "dhanush@example.com", designation: "Project Lead", access: "admin" },
+    { id: 2, name: "Praveen", age: 24, phone: "+919390576312", email: "praveen@example.com", designation: "Developer", access: "manager" }
+   
+    
   ];
 
   return (
